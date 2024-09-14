@@ -13,3 +13,7 @@ class Post(models.Model):
     is_open = models.BooleanField
     date_posted = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200) #change to be functional
+
+class Offer(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    message = models.CharField(max_length=200)
