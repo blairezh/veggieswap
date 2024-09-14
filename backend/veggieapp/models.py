@@ -8,7 +8,7 @@ class User(models.Model):
     password = models.CharField(max_length=200)
 
 class Post(models.Model):
-    poster = models.CharField(max_length=200)
+    poster = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.CharField(max_length=200)
     item_description = models.CharField(max_length=200)
     is_request = models.BooleanField
