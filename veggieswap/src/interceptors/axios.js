@@ -18,7 +18,7 @@ axios.interceptors.response.use(resp => resp, async error => {
                                                 }
                                             },{withCredentials: true});
         
-        // if theres no error, work as expected
+        // if theres no error, store new tokens
         if (response.status === 200) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${response.data['access']}`;
             localStorage.setItem('access_token', response.data.access);
