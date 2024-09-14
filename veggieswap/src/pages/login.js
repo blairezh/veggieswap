@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from "react"
+import axios from "axios";
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = (props) => {
@@ -9,7 +11,7 @@ const Login = (props) => {
 
   const navigate = useNavigate()
 
-  const onButtonClick = () => {
+  const onButtonClick = async e => {
     // Set initial error values to empty
     setEmailError('')
     setPasswordError('')
@@ -34,8 +36,52 @@ const Login = (props) => {
       setPasswordError('The password must be 8 characters or longer')
       return
     }
+
+    console.log('lets get tokens started!')
   
     // Authentication calls will be made here...
+    e.preventDefault();
+    const user = {
+          username: email,
+          password: password
+         };
+
+    console.log('setting up..')
+
+    // Create the POST requuest
+    // const {data} = await axios.post('http://localhost:8000/token/', user ,{headers: {
+    //     'Content-Type': 'application/json'
+    // }}, {withCredentials: true});
+    
+    try {
+        const { data } = await axios.post('http://localhost:8000/token/', user, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        });
+
+        console.log('we made the post request')
+        // setToken(response.data.token);
+        
+        if (data && data.access && data.refresh) {
+            // Initialize the access & refresh token in localstorage.      
+            localStorage.clear();
+            localStorage.setItem('access_token', data.access);
+            localStorage.setItem('refresh_token', data.refresh);
+            axios.defaults.headers.common['Authorization'] = 
+                                            `Bearer ${data['access']}`;
+            window.location.href = '/'
+
+            console.log('we are getting the refresh token')
+            console.log(localStorage.getItem('refresh_token'));
+        } else {
+            console.error('Unexpected response structure:', data)
+        }
+    } catch (error) {
+        console.error('Error during login:', error)
+    }
+
   }
 
   return (

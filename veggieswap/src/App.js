@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages";
 import Login from "./pages/login";
+import Logout from "./pages/logout";
 import './App.css'
 import { useEffect, useState } from 'react'
  
@@ -23,7 +24,7 @@ function App() {
                 element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
               />
               <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
           </Routes>
       </Router>
   );

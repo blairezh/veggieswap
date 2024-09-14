@@ -1,13 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import {useEffect, useState} from "react";
+import axios from "axios";
+import '../interceptors/axios';
 
 const Home = (props) => {
   const { loggedIn, email } = props
+  const [message, setMessage] = useState('');
   const navigate = useNavigate()
 
-  const onButtonClick = () => {
-    // You'll update this function later
-  }
+//   const onButtonClick = () => {
+//     const path = `newPath`; 
+//     navigate(path);
+//   }
 
   return (
     <div className="mainContainer">
@@ -15,7 +20,7 @@ const Home = (props) => {
         <div>Welcome!</div>
       </div>
       <div>This is the home page.</div>
-      <div className={'buttonContainer'}>
+      {/* <div className={'buttonContainer'}>
         <input
           className={'inputButton'}
           type="button"
@@ -23,7 +28,7 @@ const Home = (props) => {
           value={loggedIn ? 'Log out' : 'Log in'}
         />
         {loggedIn ? <div>Your email address is {email}</div> : <div />}
-      </div>
+      </div> */}
     </div>
   )
 }
