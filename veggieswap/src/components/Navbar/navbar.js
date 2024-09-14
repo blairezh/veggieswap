@@ -7,7 +7,7 @@ const Navbar = () => {
 <nav className="navbar">
   <div className="navbar-left">
     <a href="/" className="logo">
-      VeggieSwap
+      veggieswap
     </a>
   </div>
   <div className="navbar-center">

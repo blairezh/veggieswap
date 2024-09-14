@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(108, 137, 100);
+}
+p {
+    font: menu;
+    padding: 0;
+    color:#8c6c2f;
+}
+.listingContainer {
+    padding: 1%;
+    align-self: center;
+    padding-left: 20%;
+}
+.listing {
+    background-color: #ece5ce;
+    border-radius: 20px;
+    border: 2px solid #8c6c2f;
+    width: 75%;
+    padding-left: 5%;
+}
+.listing:hover {
+    box-shadow: 0 8px 16px 10px rgba(32, 84, 28, 0.2);
+}
+.listings {
+    padding-top: 3%;
+}
+
