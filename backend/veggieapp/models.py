@@ -1,12 +1,9 @@
 from django.db import models
 from django.utils import timezone
-from django.utils import timezone
+from django.contrib.auth import get_user_model
 
 # Create your models here.
-
-class User(models.Model):
-    username = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
+User = get_user_model()
 
 class Post(models.Model):
     poster = models.ForeignKey(User, on_delete=models.CASCADE)
