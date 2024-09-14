@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function MyButton() {
-  const [count, setCount] = useState(0);
+const Home = (props) => {
+  const { loggedIn, email } = props
+  const navigate = useNavigate()
 
-  function handleClick() {
-    setCount(count + 1);
+  const onButtonClick = () => {
+    // You'll update this function later
   }
 
   return (
-    <button onClick={handleClick}>
-      Clicked {count} times
-    </button>
-  );
+    <div className="mainContainer">
+      <div className={'titleContainer'}>
+        <div>Welcome!</div>
+      </div>
+      <div>This is the home page.</div>
+      <div className={'buttonContainer'}>
+        <input
+          className={'inputButton'}
+          type="button"
+          onClick={onButtonClick}
+          value={loggedIn ? 'Log out' : 'Log in'}
+        />
+        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+      </div>
+    </div>
+  )
 }
 
-export default function ShoppingList() {
-  return (
-    <div>
-      <MyButton />
-    </div>
-  );
-}
+export default Home
