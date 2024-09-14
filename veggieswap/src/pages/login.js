@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from "react"
+import axios from "axios";
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = (props) => {
@@ -9,7 +11,7 @@ const Login = (props) => {
 
   const navigate = useNavigate()
 
-  const onButtonClick = () => {
+  const onButtonClick = async e => {
     // Set initial error values to empty
     setEmailError('')
     setPasswordError('')
@@ -36,6 +38,30 @@ const Login = (props) => {
     }
   
     // Authentication calls will be made here...
+    e.preventDefault();
+    const user = {
+          username: email,
+          password: password
+         };
+
+    // Create the POST requuest
+    // const {data} = await axios.post('http://localhost:8000/token/', user ,{headers: {
+    //     'Content-Type': 'application/json'
+    // }}, {withCredentials: true});
+    const { data } = await axios.post('http://localhost:8000/token/', user, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        withCredentials: true
+    });
+
+    // Initialize the access & refresh token in localstorage.      
+    localStorage.clear();
+    localStorage.setItem('access_token', data.access);
+    localStorage.setItem('refresh_token', data.refresh);
+    axios.defaults.headers.common['Authorization'] = 
+                                    `Bearer ${data['access']}`;
+    window.location.href = '/'
   }
 
   return (
