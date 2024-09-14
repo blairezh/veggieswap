@@ -9,48 +9,10 @@ const Home = (props) => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate()
 
-//   // if authenticated, goes immediately to login page?
-//   useEffect(() => {
-//     if(localStorage.getItem('access_token') === null){                   
-//         window.location.href = '/login'
-//     }
-//     else{
-//         (async () => {
-//             try {
-//                 const {data} = await axios.get(   
-//                                 'http://localhost:8000/home/', {
-//                                 headers: {
-//                                     'Content-Type': 'application/json'
-//                                 }}
-//                             );
-//                 setMessage(data.message);
-//             } catch (e) {
-//                 console.log('not auth')
-//             }
-//         })()};
-//   }, []);
-
-  const onButtonClick = () => {
-    // You'll update this function later
-    if(localStorage.getItem('access_token') === null){                   
-        window.location.href = '/login'
-    }
-    else{
-        (async () => {
-            try {
-                const {data} = await axios.get(   
-                                'http://localhost:8000/home/', {
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }}
-                            );
-                setMessage(data.message);
-            } catch (e) {
-                console.log('not auth')
-            }
-        })()};
-    
-  }
+//   const onButtonClick = () => {
+//     const path = `newPath`; 
+//     navigate(path);
+//   }
 
   return (
     <div className="mainContainer">
@@ -58,7 +20,7 @@ const Home = (props) => {
         <div>Welcome!</div>
       </div>
       <div>This is the home page.</div>
-      <div className={'buttonContainer'}>
+      {/* <div className={'buttonContainer'}>
         <input
           className={'inputButton'}
           type="button"
@@ -66,7 +28,7 @@ const Home = (props) => {
           value={loggedIn ? 'Log out' : 'Log in'}
         />
         {loggedIn ? <div>Your email address is {email}</div> : <div />}
-      </div>
+      </div> */}
     </div>
   )
 }
