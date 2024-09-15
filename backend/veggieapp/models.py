@@ -1,12 +1,21 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+import json
+from django.core.serializers import serialize 
 
 # Create your models here.
 User = get_user_model()
+# users = User.objects.all()
+# serialized_data = serialize("json", users)
+# serialized_data = json.loads(serialized_data)
+
+#class User(models.Model):
+#    username = models.CharField(max_length=200)
+#    password = models.CharField(max_length=200)
 
 class Post(models.Model):
-    poster = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
     item = models.CharField(max_length=200)
     item_description = models.CharField(max_length=200)
     is_request = models.BooleanField
@@ -18,7 +27,7 @@ class Post(models.Model):
         return self.item
 
 class Offer(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    #post = models.ForeignKey(Post, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)
 
     def __str__(self):

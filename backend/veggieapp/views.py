@@ -9,16 +9,25 @@ from .models import Post#, Offer
 from .serializers import PostSerializer#, OfferSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
+from django.core.serializers import serialize 
 
-#class PostView(viewsets.ModelViewSet):
-#        queryset = Post.objects.all#.order_by('-date_created')
-#        serializer_class = PostSerializer
+class PostView(APIView):
+    def get(self, request):
+        output = [{"name": output.name,
+                   "item": output.item, 
+                   "is_request": output.is_request, 
+                   "is_open": output.is_open,
+                   "date_posted": output.date_posted,
+                   "location": output.location}
+                   for output in Post.objects.all()]
+        return Response(output)
+    
+    def post(self, request):
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
 
-@api_view(['GET'])
-def getData(request):
-     posts = Post.objects.all()
-     serializer = PostSerializer(posts, many=True)
-     return Response(serializer.data)
 
 ##class OfferView(viewsets.ModelViewSet):
 ##        queryset = Post.objects.all#.order_by('-post')
