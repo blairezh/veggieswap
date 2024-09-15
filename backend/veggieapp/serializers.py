@@ -5,6 +5,7 @@ from .models import Post, Offer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         #fields = ['username', 'password']
+        model = User
         fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):

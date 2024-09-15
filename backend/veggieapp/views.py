@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
 from .models import Post#, Offer
-from .serializers import PostSerializer#, OfferSerializer
+from .serializers import PostSerializer, UserSerializer#, OfferSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from django.core.serializers import serialize 
@@ -33,6 +33,13 @@ class PostView(APIView):
 ##class OfferView(viewsets.ModelViewSet):
 ##        queryset = Post.objects.all#.order_by('-post')
 ##        serializer_class = OfferSerializer
+
+class UserDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
 
 class HomeView(APIView):
     permission_classes = (IsAuthenticated, )
