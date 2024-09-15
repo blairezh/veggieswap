@@ -22,6 +22,10 @@ export default function PublicBoard() {
             <div className="listings">
                 <Listing/>
                 <Listing/>
+                <Listing/>
+                <Listing/>
+                <Listing/>
+                <Listing/>
             </div>
         </div>
     );

@@ -1,5 +1,14 @@
+html, body {
+    height: 100%; /* Ensure html and body take up the full height */
+    margin: 0; /* Remove default margin */
+}
+
 body {
-    background-color: rgb(108, 137, 100);
+    background-image: url("../../public/static/carrot bg.png");
+    background-color: #ece5ce;
+    background-repeat: repeat; /* Do not repeat the image */
+    background-size: auto 100vh; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
 }
 p {
     font: menu;
@@ -7,19 +16,30 @@ p {
     color:#8c6c2f;
 }
 .listingContainer {
-    padding: 1%;
-    align-self: center;
-    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+    /* padding-left: 20%; */
 }
+
+.listings {
+    width: 80%; /* Set a max width for listings */
+    margin-bottom: 10px; /* Add space between listings */
+}
+
 .listing {
     background-color: #ece5ce;
     border-radius: 20px;
-    border: 2px solid #8c6c2f;
+    border: 2px solid #e2d7c3;
+    padding: 20px;
     width: 75%;
     padding-left: 5%;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .listing:hover {
-    box-shadow: 0 8px 16px 10px rgba(32, 84, 28, 0.2);
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 2px 2px 16px 4px #e8cea9;
 }
 .listings {
     padding-top: 3%;
