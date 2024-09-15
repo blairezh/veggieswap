@@ -15,9 +15,10 @@ class PostView(APIView):
     def get(self, request):
         output = [{"name": output.name,
                    "item": output.item, 
-                   "is_request": output.is_request, 
-                   "is_open": output.is_open,
-                   "date_posted": output.date_posted,
+                   "item_description": output.item_description,
+                   #"is_request": output.is_request, 
+                   #"is_open": output.is_open,
+                   #"date_posted": output.date_posted,
                    "location": output.location}
                    for output in Post.objects.all()]
         return Response(output)
