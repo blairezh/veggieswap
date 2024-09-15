@@ -5,34 +5,19 @@ import axios from 'axios';
 
 
 //function Listing({poster, item, item_description, is_request, is_open, date_posted, location}) {
-function Listing({item, item_description, date_posted, location}) {
+function Listing({user, item, item_description, date_posted, location}) {
     return (
         <div className="listingContainer">
             <div className="listing">
                 <h4 className="title">{item}</h4>
                 <p>{item_description}</p>
-                <p>{location} , {date_posted}</p>
-                <a href="google.com">see more...</a>
+                <p>Location: {location}</p>
+                <p>Contact {user} if you'd like to start bartering!</p>
                 <i class="messageIcon"></i>
             </div>
         </div>
     );
 }
-
-// export default function PublicBoard() {
-//     return(
-//         <div name="board">
-//             <div className="listings">
-//                 <Listing/>
-//                 <Listing/>
-//                 <Listing/>
-//                 <Listing/>
-//                 <Listing/>
-//                 <Listing/>
-//             </div>
-//         </div>
-//     );
-// }
 
 export default class PublicBooard extends React.Component {
     state = {deails: [], }
@@ -55,16 +40,15 @@ export default class PublicBooard extends React.Component {
                             (output, id) => (
                                 <div key={id}>
                                     <Listing
+                                    user = {output.name}
                                     item = {output.item}
                                     item_description = {output.item_description}
-                                    date_posted = {output.date_posted}
                                     location = {output.location}
                                     />
                                 </div>
                         ))}
                 </div>
             </div>
-            <button href="/post">post listing</button>
             </>
         );
     }
