@@ -15,7 +15,8 @@ User = get_user_model()
 #    password = models.CharField(max_length=200)
 
 class Post(models.Model):
-    name = models.CharField(max_length=200)
+    # name = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='anonymous')
     item = models.CharField(max_length=200)
     item_description = models.CharField(max_length=200)
     is_request = models.BooleanField(default=False)

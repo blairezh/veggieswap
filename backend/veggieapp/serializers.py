@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Post
         #user = UserSerializer 
