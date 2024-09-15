@@ -21,6 +21,9 @@ const Navbar = () => {
               <a href="/publicboard">Listings</a>
             </li>
             <li>
+              <a href="/post">Create Listing</a>
+            </li>
+            <li>
               <a href="/account">Account</a>
             </li>
             <li>

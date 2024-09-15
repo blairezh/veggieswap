@@ -18,8 +18,8 @@ class Post(models.Model):
     name = models.CharField(max_length=200)
     item = models.CharField(max_length=200)
     item_description = models.CharField(max_length=200)
-    is_request = models.BooleanField
-    is_open = models.BooleanField
+    is_request = models.BooleanField(default=False)
+    is_open = models.BooleanField(default=True)
     date_posted = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200) #change to be functional
 

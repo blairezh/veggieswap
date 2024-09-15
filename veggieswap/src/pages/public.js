@@ -12,7 +12,7 @@ function Listing({item, item_description, date_posted, location}) {
                 <h4 className="title">{item}</h4>
                 <p>{item_description}</p>
                 <p>{location} , {date_posted}</p>
-                <a href="google.com">link here</a>
+                <a href="google.com">see more...</a>
                 <i class="messageIcon"></i>
             </div>
         </div>
@@ -48,9 +48,10 @@ export default class PublicBooard extends React.Component {
 
     render() {
         return(
+            <>
             <div name="board">
                 <div className="listings">
-                        {this.state.details.map(
+                        {this.state.details?.map(
                             (output, id) => (
                                 <div key={id}>
                                     <Listing
@@ -63,6 +64,8 @@ export default class PublicBooard extends React.Component {
                         ))}
                 </div>
             </div>
+            <button href="/post">post listing</button>
+            </>
         );
     }
 }
