@@ -13,7 +13,7 @@ from django.core.serializers import serialize
 
 class PostView(APIView):
     def get(self, request):
-        output = [{"name": output.name,
+        output = [{"name": output.user.username,
                    "item": output.item, 
                    "item_description": output.item_description,
                    #"is_request": output.is_request, 
@@ -26,7 +26,7 @@ class PostView(APIView):
     def post(self, request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            serializer.save(user=request.user)  # set user to currently authenticated user
             return Response(serializer.data)
 
 
