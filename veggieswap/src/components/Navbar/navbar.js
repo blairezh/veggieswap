@@ -15,24 +15,18 @@ const Navbar = () => {
             VeggieSwap
           </a>
         </div>
-        <div className="navbar-center">
+        <div className="navbar-right">
           <ul className="nav-links">
             <li>
-              <a href="/login">Login</a>
+              <a href="/publicboard">Listings</a>
+            </li>
+            <li>
+              <a href="/account">Account</a>
             </li>
             <li>
               <a href="/logout">Logout</a>
             </li>
           </ul>
-        </div>
-        <div className="navbar-right">
-          <a href="/cart" className="cart-icon">
-            <i className="fas fa-shopping-cart"></i>
-            <span className="cart-count">0</span>
-          </a>
-          <a href="/account" className="user-icon">
-            <i className="fas fa-user"></i>
-          </a>
         </div>
       </nav>
     );
