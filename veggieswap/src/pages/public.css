@@ -1,0 +1,47 @@
+html, body {
+    height: 100%; /* Ensure html and body take up the full height */
+    margin: 0; /* Remove default margin */
+}
+
+body {
+    background-image: url("../../public/static/carrot bg.png");
+    background-color: #ece5ce;
+    background-repeat: repeat; /* Do not repeat the image */
+    background-size: auto 100vh; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+}
+p {
+    font: menu;
+    padding: 0;
+    color:#8c6c2f;
+}
+.listingContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+    /* padding-left: 20%; */
+}
+
+.listings {
+    width: 80%; /* Set a max width for listings */
+    margin-bottom: 10px; /* Add space between listings */
+}
+
+.listing {
+    background-color: #ece5ce;
+    border-radius: 20px;
+    border: 2px solid #e2d7c3;
+    padding: 20px;
+    width: 75%;
+    padding-left: 5%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.listing:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 2px 2px 16px 4px #e8cea9;
+}
+.listings {
+    padding-top: 3%;
+}
+

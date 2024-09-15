@@ -6,14 +6,12 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./pages";
-import Login from "./pages/login";
-import Logout from "./pages/logout";
+import PublicBoard from "./pages/public";
+import Post from "./pages/post";
 import './App.css'
 import { useEffect, useState } from 'react'
  
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [email, setEmail] = useState('')
 
   return (
       <Router>
@@ -21,10 +19,10 @@ function App() {
           <Routes>
               <Route
                 path="/"
-                element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+                element={<Home />}
               />
-              <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-              <Route path="/logout" element={<Logout />} />
+              <Route path="/publicboard" element={<PublicBoard/>}/>
+              <Route path="post" element={<Post/>}/>
           </Routes>
       </Router>
   );
