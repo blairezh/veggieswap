@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'veggieapp'
+    'veggieapp.apps.VeggieappConfig',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

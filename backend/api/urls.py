@@ -17,7 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
-from veggieapp.views import PostView, OfferView
+#from veggieapp.views import PostView, OfferView
+from veggieapp.views import getData
+from rest_framework import routers
+
+route = routers.DefaultRouter()
+#route.register("", PostView, basename="postview")
+#route.register("", OfferView, basename="offerview")
+route.register("", getData, basename="postview")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +34,6 @@ urlpatterns = [
         name ='token_obtain_pair'),
     path('token/refresh/', 
         jwt_views.TokenRefreshView.as_view(), 
-        name ='token_refresh')
+        name ='token_refresh'),
+    path('api/', include(route.urls)),
 ]

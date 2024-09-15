@@ -14,6 +14,12 @@ class Post(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200) #change to be functional
 
+    def __str__(self):
+        return self.item
+
 class Offer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.message
