@@ -22,7 +22,7 @@ function App() {
                 element={<Home />}
               />
               <Route path="/publicboard" element={<PublicBoard/>}/>
-              <Route path="post" element={<Post/>}/>
+              <Route path="/post" element={<Post/>}/>
           </Routes>
       </Router>
   );
