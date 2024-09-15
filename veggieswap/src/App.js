@@ -8,6 +8,7 @@ import {
 import Home from "./pages";
 import PublicBoard from "./pages/public";
 import Post from "./pages/post";
+import Account from "./pages/account";
 import './App.css'
 import { useEffect, useState } from 'react'
  
@@ -23,6 +24,7 @@ function App() {
               />
               <Route path="/publicboard" element={<PublicBoard/>}/>
               <Route path="/post" element={<Post/>}/>
+              <Route path="/account" element={<Account/>}/>
           </Routes>
       </Router>
   );

@@ -1,9 +1,26 @@
-import react from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Account() {
+function Account() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        axios.get('/api/user/', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            }
+        })
+        .then(response => setUser(response.data))
+        .catch(error => console.error('Error fetching user data:', error));
+    }, []);
+    if (!user) return <div>Loading...</div>;
+
     return (
-        <div className="user_posts">
-            
+        <div>
+            <h1>User Profile</h1>
+            <p>Email: {user.email}</p>
         </div>
     );
 }
+
+export default Account;
